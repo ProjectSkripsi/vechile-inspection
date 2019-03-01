@@ -127,11 +127,15 @@ const busSchema = new Schema({
     tirePreasureFront: {
         type: Number
     },
-    tirePreasureBack:{
+    tirePreasureRear:{
         type: Number
     },
     others: {
         type: String
+    },
+    inspectionBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
     deleteAt: {
         type: Date,

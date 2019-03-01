@@ -75,6 +75,9 @@ module.exports = {
         })
         .then(result =>{
             let user = {
+                name: result.name,
+                address: result.address,
+                contact: result.contact,
                 username: result.username,
                 _id: result._id,
                 role: result.role

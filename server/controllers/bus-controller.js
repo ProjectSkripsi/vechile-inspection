@@ -51,6 +51,7 @@ module.exports = {
 
     findAll: (req, res) =>{
         Bus.find({})
+        .populate('inspectionBy')
         .then(response =>{
             res.status(200).json(response)
         })
@@ -85,7 +86,62 @@ module.exports = {
         .catch(err =>{
             res.status(500).json(err)
         })
+    },
+
+    updateInspection: (req, res) =>{
+        Bus.findByIdAndUpdate({
+            _id: req.params.id
+        },{
+            firstAid: req.body.firstAid,
+            frontPlate: req.body.frontPlate,
+            rearPlate: req.body.rearPlate,
+            inspectionBook: req.body.inspectionBook ,
+            spareTire: req.body.spareTire ,
+            headLightRight: req.body.headLightRight ,
+            headLightLeft: req.body.headLightLeft ,
+            frontFlaserLightRight: req.body.frontFlaserLightRight ,
+            frontFlaserLightLeft: req.body.frontFlaserLightLeft ,
+            rearFlaserLightRight: req.body.rearFlaserLightRight ,
+            rearFlaserLightLeft: req.body.rearFlaserLightLeft ,
+            stopLightRight: req.body.stopLightRight ,
+            stopLightLeft: req.body.stopLightLeft ,
+            backupLightRight: req.body.backupLightRight ,
+            backupLightLeft: req.body.backupLightLeft ,
+            platLight: req.body.platLight ,
+            hazardLight: req.body.hazardLight ,
+            horn: req.body.horn ,
+            safetyBeltFront: req.body.safetyBeltFront ,
+            safetyBeltBack: req.body.safetyBeltBack ,
+            handBreake: req.body.handBreake ,
+            cabinMirror: req.body.cabinMirror ,
+            fireExtiungiser: req.body.fireExtiungiser ,
+            jack: req.body.jack ,
+            jackHandle: req.body.jackHandle ,
+            tireWrech: req.body.tireWrech ,
+            fanBelt: req.body.fanBelt ,
+            triangle: req.body.triangle ,
+            cutterMirrorRight: req.body.cutterMirrorRight ,
+            cutterMirrorLeft: req.body.cutterMirrorLeft ,
+            engineOil: req.body.engineOil ,
+            radiatorCooling: req.body.radiatorCooling ,
+            brakeOil: req.body.brakeOil ,
+            wiperWater: req.body.wiperWater,
+            liquidBAttery: req.body.liquidBAttery ,
+            airConditioner: req.body.airConditioner ,
+            tirePreasureTester: req.body.tirePreasureTester ,
+            tirePreasureFront: req.body.tirePreasureFront ,
+            tirePreasureRear:req.body.tirePreasureRear ,
+            others: req.body.others,
+            inspectionBy: req.decoded.id
+        })
+        .then(response =>{
+            res.status(201).json(response)
+        })
+        .catch(err =>{
+            res.status(500).json(err)
+        })
     }
+    
 
 
 

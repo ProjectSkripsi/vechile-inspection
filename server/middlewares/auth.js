@@ -60,7 +60,6 @@ module.exports = {
 
 
     isAdmin : (req, res, next)=>{
-        console.log(req.decoded)
         if(req.decoded.role === 'admin'){
             next()
         }else{
