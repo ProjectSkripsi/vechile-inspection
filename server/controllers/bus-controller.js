@@ -132,6 +132,7 @@ module.exports = {
             tirePreasureFront: req.body.tirePreasureFront ,
             tirePreasureRear:req.body.tirePreasureRear ,
             others: req.body.others,
+            status: true,
             inspectionBy: req.decoded.id
         })
         .then(response =>{
