@@ -140,9 +140,48 @@ module.exports = {
         .catch(err =>{
             res.status(500).json(err)
         })
-    }
+    },
     
+    findStatus: (req, res) =>{
+        Bus.find({
+            status: true
+        })
+        .populate('inspectionBy')
+        .then(response =>{
+            res.status(201).json(response)
+        })
+        .catch(err =>{
+            res.status(500).json(err)
+        })
+    },
 
+    worthy: (req, res) =>{
+        Bus.findByIdAndUpdate({
+            _id: req.params.id
+        },{
+            result: "Layak Jalan"
+        })
+        .then(response =>{
+            res.status(200).json(response)
+        })
+        .catch(err =>{
+            res.status(500).json(err)
+        })
+    },
+
+    notWorthy: (req, res) =>{
+        Bus.findByIdAndUpdate({
+            _id: req.params.id
+        },{
+            result: "Tidak Layak Jalan"
+        })
+        .then(response =>{
+            res.status(200).json(response)
+        })
+        .catch(err =>{
+            res.status(500).json(err)
+        })
+    }
 
 
 }

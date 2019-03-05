@@ -137,6 +137,13 @@ const busSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    status: {
+        type: Boolean,
+        default: false
+    },
+    result: {
+        type: String,
+    },
     deleteAt: {
         type: Date,
         default: null
