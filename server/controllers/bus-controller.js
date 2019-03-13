@@ -41,6 +41,7 @@ module.exports = {
         Bus.findById({
             _id: req.params.id
         })
+        .populate('inspectionBy')
         .then(response =>{
             res.status(200).json(response)
         })
